@@ -73,14 +73,20 @@ class _MovieListPageState extends State<MovieListPage> {
                     subtitle: Text(
                       '${movie.year} • ${movie.genre}\n⭐ ${movie.rating}',
                     ),
-                    trailing: IconButton(
-                      icon: Icon(
-                        isBookmarked
-                            ? Icons.bookmark
-                            : Icons.bookmark_border,
-                        color: isBookmarked ? Colors.blue : Colors.black54,
+                    trailing: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: isBookmarked ? Colors.blue : Colors.white,
+                        foregroundColor: isBookmarked ? Colors.white : Colors.black,
+                        elevation: 0,
+                        side: BorderSide(
+                          color: isBookmarked ? Colors.blue : Colors.black,
+                        ),
                       ),
                       onPressed: () => _toggleBookmark(movie.title),
+                      icon: Icon(
+                        isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                      ),
+                      label: const Text('Add to List'),
                     ),
                     onTap: () {
                       Navigator.push(
